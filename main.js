@@ -1,40 +1,41 @@
-class List {
-    constructor(){
-        this.data = [];
-    }
+//operações com Array em ES6+
+const array = [1, 3, 4, 5, 8, 9];
 
-    add(value){
-        this.data.push(value);
-        console.log(this.data);
-    }
-    pop(){
-        this.data.pop();
-        this.print();
-    }
-    print(){
-        console.log(this.data);
-    }
-}
+//Map: percorre o array e retorna um valor
+const novoArray = array.map(function (item, index){
+    return item * 2;
+});
+console.log(novoArray);
 
-class TodoList extends List{
-    print(){
-        console.log("Imprimindo Todolist.");
-        super.print();
-    }
-}
+//Reduce: consumir todo o vetor e transformar em uma única informação
+const soma = array.reduce(function (total, proximoValor){
+    return total + proximoValor;
+});
+console.log(soma);
 
-class Matematica{
-    static soma(valueA, valueB){
-        return valueA + valueB;
-    }
-}
+//Filter: filtrar somente os itens que queremos
+const filterPares = array.filter(function (item){
+    return item % 2 === 0;
+});
+console.log(filter);
 
-const minhaLista = new TodoList();
-console.log(Matematica.soma(5,7));
+const usuarios = [
+    { nome: "Usuario 1", idade: 10},
+    { nome: "Usuario 2", idade: 15},
+    { nome: "Usuario 3", idade: 18},
+];
+const novosUsuarios = usuarios.filter(function(usuario){
+    return usuario.idade >= 15;
+});
+console.log(novosUsuarios);
 
-document.getElementById("novotodo").onclick = function () {
-    minhaLista.add("Qualquer coisa");
-}
-document.getElementById("remover").onclick = function () {
-    minhaLista.pop();
-}
+//Find: encontra um item do array
+const find = usuarios.find(function(item){
+    return item.nome === "Usuario 1"
+});
+console.log(find);
+
+//forEach: percorre o array porem não precisa retornar um valor
+usuarios.forEach(function(item, index){
+    console.log(item);
+});
